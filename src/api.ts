@@ -1,4 +1,15 @@
-const db: Array<Todo> = [];
+const db: Array<Todo> = [
+  {
+    id: uuid(),
+    text: "Make react app",
+    completed: true,
+  },
+  {
+    id: uuid(),
+    text: "Make data fetcher",
+    completed: false,
+  },
+];
 
 type Todo = {
   id: string;
