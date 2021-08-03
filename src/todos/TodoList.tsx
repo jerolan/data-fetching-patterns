@@ -18,7 +18,7 @@ export default function TodoList() {
             <input
               type="text"
               className="bg-transparent w-full"
-              value={todo.text}
+              defaultValue={todo.text}
             />
           </div>
         );
