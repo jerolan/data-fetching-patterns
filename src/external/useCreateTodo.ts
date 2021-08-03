@@ -17,19 +17,22 @@ export default function useCreateTodo() {
 
       queryClient.setQueryData(KEY, [
         ...prevTodos,
-        { text, id: Date.now().toString(), completed: false },
+        { text, id: Date.now().toString(), completed: false }
       ]);
 
       return { prevTodos };
     },
     onError: (err, newTodo, context: any) => {
       queryClient.setQueryData(KEY, context.prevTodos);
-    },
+    }
   });
 
-  const createTodo = useCallback((text: string) => {
-    mutation.mutate(text);
-  }, []);
+  const createTodo = useCallback(
+    (text: string) => {
+      mutation.mutate(text);
+    },
+    [mutation]
+  );
 
   return createTodo;
 }
