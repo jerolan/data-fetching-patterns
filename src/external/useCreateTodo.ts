@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { addTodo, Todo } from "../api";
 
@@ -26,5 +27,9 @@ export default function useCreateTodo() {
     },
   });
 
-  return mutation.mutate;
+  const createTodo = useCallback((text: string) => {
+    mutation.mutate(text);
+  }, []);
+
+  return createTodo;
 }

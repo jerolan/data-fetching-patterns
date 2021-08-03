@@ -8,7 +8,7 @@ export default function Todos() {
     <div className="bg-black h-screen w-full pt-20">
       <div
         style={{ backgroundColor: "#FFFF99" }}
-        className="w-full max-w-2xl mx-auto rounded h-full overflow-y-scroll p-4"
+        className="w-full max-w-2xl mx-auto rounded h-full overflow-y-auto p-4"
       >
         <p className="font-bold border-b border-black pb-4">Todos</p>
         <TodoList />

@@ -1,9 +1,9 @@
 import React from "react";
-import useCreateTodo from "../external/useCreateTodo";
+import { useTodoContext } from "./TodoContext";
 
 export default function Todos() {
   const [text, setText] = React.useState("");
-  const createTodo = useCreateTodo();
+  const { createTodo } = useTodoContext();
 
   function handleAddTodo(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
