@@ -18,6 +18,7 @@ type Todo = {
 };
 
 export async function getTodos() {
+  await wait(1500);
   return db;
 }
 
@@ -29,6 +30,7 @@ export async function addTodo(text: string) {
   };
 
   db.push(todo);
+  await wait(1500);
   return todo;
 }
 
@@ -39,6 +41,7 @@ export async function updateTodo(id: string, text: string) {
   }
 
   todo.text = text;
+  await wait(1500);
   return todo;
 }
 
@@ -49,6 +52,7 @@ export async function deleteTodo(id: string) {
   }
 
   db.splice(db.indexOf(todo), 1);
+  await wait(1500);
 }
 
 function uuid() {
@@ -57,4 +61,8 @@ function uuid() {
       v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
+}
+
+function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
