@@ -10,7 +10,7 @@ export default function QueryTodoProvider({ children }: any) {
 
   const value = useMemo(() => {
     return { todos: data, createTodo, loading: isLoading };
-  }, [data, createTodo]);
+  }, [data, isLoading, createTodo]);
 
   return <TodoProvider value={value}>{children}</TodoProvider>;
 }
