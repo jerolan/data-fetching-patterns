@@ -1,20 +1,13 @@
 import React from "react";
-import { useMutation, useQueryClient } from "react-query";
-import { addTodo } from "../api";
+import useCreateTodo from "../external/useCreateTodo";
 
 export default function Todos() {
   const [text, setText] = React.useState("");
-  const queryClient = useQueryClient();
-  const mutation = useMutation(addTodo, {
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries("todos");
-    },
-  });
+  const createTodo = useCreateTodo();
 
   function handleAddTodo(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
-    mutation.mutate(text);
+    createTodo(text);
     setText("");
   }
 

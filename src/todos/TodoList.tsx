@@ -1,9 +1,9 @@
 import React from "react";
-import { useQuery } from "react-query";
-import { getTodos } from "../api";
+
+import useTodos from "../external/useTodos";
 
 export default function TodoList() {
-  const { data, isLoading } = useQuery("todos", getTodos);
+  const { data, isLoading } = useTodos();
 
   if (isLoading) {
     return <p>Loading...</p>;
