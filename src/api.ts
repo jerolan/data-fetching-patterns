@@ -1,14 +1,26 @@
+function uuid() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 const db: Array<Todo> = [
   {
     id: uuid(),
     text: "Make react app",
-    completed: true,
+    completed: true
   },
   {
     id: uuid(),
     text: "Make data fetcher",
-    completed: false,
-  },
+    completed: false
+  }
 ];
 
 export type Todo = {
@@ -26,7 +38,7 @@ export async function addTodo(text: string) {
   const todo = {
     id: uuid(),
     text,
-    completed: false,
+    completed: false
   };
 
   db.push(todo);
@@ -53,16 +65,4 @@ export async function deleteTodo(id: string) {
 
   db.splice(db.indexOf(todo), 1);
   await wait(1500);
-}
-
-function uuid() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0,
-      v = c === "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
-function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }

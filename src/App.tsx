@@ -1,8 +1,7 @@
 import React from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
 
-import ExternalTodoProvider from "./external/TodoProvider";
-// import LocalTodoProvider from "./local/TodoProvider";
+import TodoProvider from "./todos/api/TodoProvider";
 import Todos from "./todos/Todos";
 
 const queryClient = new QueryClient();
@@ -10,19 +9,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ExternalTodoProvider>
+      <TodoProvider>
         <Todos />
-      </ExternalTodoProvider>
+      </TodoProvider>
     </QueryClientProvider>
   );
 }
-
-// function App() {
-//   return (
-//     <LocalTodoProvider>
-//       <Todos />
-//     </LocalTodoProvider>
-//   );
-// }
 
 export default App;

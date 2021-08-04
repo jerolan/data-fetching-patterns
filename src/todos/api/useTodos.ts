@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getTodos } from "../api";
+import { getTodos } from "../../api";
 
 export const KEY = "todos";
 
