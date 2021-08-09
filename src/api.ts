@@ -46,13 +46,14 @@ export async function addTodo(text: string) {
   return todo;
 }
 
-export async function updateTodo(id: string, text: string) {
+export async function updateTodo(id: string, text: string, completed: boolean) {
   const todo = db.find((t) => t.id === id);
   if (todo == null) {
     throw new Error(`Todo with id ${id} not found`);
   }
 
   todo.text = text;
+  todo.completed = completed;
   await wait(1500);
   return todo;
 }

@@ -1,10 +1,18 @@
 import { createContext, useContext } from "react";
 import { Todo } from "../api";
 
+export type CreateTodoInput = string;
+export type UpdateTodoInput = {
+  id: string;
+  completed: boolean;
+  text: string;
+};
+
 interface TodoContextValue {
   todos: Todo[] | undefined;
   loading: boolean;
-  createTodo(text: string): void;
+  createTodo(text: CreateTodoInput): void;
+  updateTodo(input: UpdateTodoInput): Promise<Todo>;
 }
 
 export const TodoContext = createContext<TodoContextValue | undefined>(
